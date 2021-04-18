@@ -1,0 +1,82 @@
+<!-- INCLUDE HEADER -->
+<%- include('../../header')%>
+
+<!-- VERIFICATION MESSAGES -->
+<% if(locals.message){ %>
+  <div class="ui green message">
+    <%- message %>
+  </div>
+<% } %>
+
+<% if(locals.message_err){ %>
+  <div class="ui red message">
+    <%- message_err %>
+  </div>
+<% } %>
+
+<div class="container">
+  <div class="ui centered">
+    <!-- TITLE -->
+    <div>
+      <h1>Formulaire de connexion</h1>
+    </div>
+
+    <!-- TITLE -->
+    <div class="content">
+        <form class="formulaire" action="/login" method="post">
+          <div class="ui equal width form post">
+
+    <!-- GOOGLE APPLE -->
+    <div class="div_1">
+      <div class="div_networks_login">
+        <div class="div_networks_login2">
+          <img src="../../../img/google_icon.jpg">
+        </div>
+        <div class="div_networks_login2">
+          <img src="../../../img/apple_icon.png">
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL -->
+            <div class="div_1">
+              <div class="div_2">
+                <div>
+                  <label for="email" class="labtitle" name="email">Adresse Email</label>
+                </div>
+                <div>
+                  <input class="ui input" id="email" name="email" type="text">
+                </div>
+              </div>
+            </div>
+
+    <!-- PASSWORD -->
+            <div class="div_1">
+              <div class="div_2">
+                <div>
+                  <label for="password" class="labtitle" name="password">Mot de passe</label>
+                </div>
+                <div>
+                  <input class="ui input" id="password" name="password" type="password">
+                </div>
+                <div class="div_3">
+                  <a class="forgot_password" href="#">Mot de passe oublié ?</a>
+                </div>
+              </div>
+            </div>
+
+    <!-- SUBMIT BUTTON -->
+            <div class="div_1">
+              <button type="submit" class="ui button">Connexion</button>
+            </div>
+            <div class="div_3">
+              <a href="#">Pas inscrit ? Cliquez ici !</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+<!-- INCLUDE FOOTER -->
+<%- include('../../footer')%>

@@ -1,0 +1,130 @@
+<!-- INCLUDE HEADER -->
+<%- include('../../header')%>
+
+<!-- CONTAINER -->
+<div class="container">
+  <div>
+    <!-- TITLE -->
+    <div>
+      <h1>Formulaire d'inscription</h1>
+    </div>
+
+    <!-- TITLE -->
+    <div class="content">
+
+      <% if(locals.message){ %>
+        <div class="ui green message">
+          <%- message %>
+        </div>
+      <% } %>
+      
+      <% if(locals.message_err){ %>
+        <div class="ui red message">
+          <%- message_err %>
+        </div>
+      <% } %>
+
+    <!-- FORM -->
+        <form class="formulaire" action="/register" method="post">
+          <div class="ui equal width form post">
+
+    <!-- SUBTITLE -->
+    <div>
+      <h3 class="header">Entrez vos informations</h3>
+    </div>
+    
+    <!-- FIRST NAME -->
+            <div class="div_1">
+              <div class="div_2">
+                <div>
+                  <label for="prenom" class="labtitle" name="prenom">Prenom <span class="red">*</span></label>
+                </div>
+                <div>
+                  <input class="ui input" id="prenom" name="prenom" type="text">
+                </div>
+              </div>
+            </div>
+
+    <!-- LAST NAME -->
+            <div class="div_1">
+              <div class="div_2">
+                <div>
+                  <label for="nom" class="labtitle" name="nom">Nom <span class="red">*</span></label>
+                </div>
+                <div>
+                  <input class="ui input" id="nom" name="nom" type="text">
+                </div>
+              </div>
+            </div>
+
+    <!-- EMAIL -->
+            <div class="div_1">
+              <div class="div_2">
+                <div>
+                  <label for="email" class="labtitle" name="email">Adresse Email <span class="red">*</span></label>
+                </div>
+                <div>
+                  <input class="ui input" id="email" name="email" type="email">
+                </div>
+              </div>
+            </div>
+
+    <!-- ENTER PASSWORD -->
+            <div class="div_1">
+              <div class="div_2">
+                <div>
+                  <label for="password1" class="labtitle" name="password1">Mot de passe <span class="red">*</span></label>
+                </div>
+                <div>
+                  <input class="ui input" id="password1" name="password1" type="password">
+                </div>
+              </div>
+            </div>
+
+    <!-- PASSWORD VERIFICATION -->
+            <div class="div_1">
+              <div class="div_2">
+                <div>
+                  <label for="password2" class="labtitle" name="password2">Vérification Mot de passe <span class="red">*</span></label>
+                </div>
+                <div>
+                  <input class="ui input" id="password2" name="password2" type="password" width="300">
+                </div>
+              </div>
+            </div>
+
+    <!-- PSEUDONYME -->
+            <div class="div_1">
+              <div class="div_2">
+                <div>
+                  <label for="pseudo" class="labtitle" name="pseudo">Pseudo <span class="red">*</span></label>
+                </div>
+                <div>
+                  <input class="ui input" name="pseudo" type="text">
+                </div>
+              </div>
+            </div>
+
+            <div class="div_1 role_disabled">
+              <div class="div_2">
+                <div>
+                  <label for="role" class="labtitle" name="role">Role <span class="red">*</span></label>
+                </div>
+                <div>
+                  <input class="ui input hidden" name="role" type="text" value="Utilisateur">
+                </div>
+              </div>
+            </div>
+
+    <!-- SUBMIT BUTTON -->
+            <div class="div_1">
+              <button type="submit" class="ui button">S'inscrire</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+<!-- INCLUDE FOOTER -->
+<%- include('../../footer')%>

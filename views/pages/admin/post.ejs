@@ -1,0 +1,71 @@
+<!-- INCLUDE HEADER -->
+<%- include('../../header')%>
+
+<!-- VERIFICATION MESSAGES -->
+<% if(locals.message){ %>
+  <div class="ui green message">
+    <%- message %>
+  </div>
+<% } %>
+
+<% if(locals.message_err){ %>
+  <div class="ui red message">
+    <%- message_err %>
+  </div>
+<% } %>
+
+<!-- FORM -->
+<form class="formulaire" action="/post" method="post" enctype="multipart/form-data">
+    <div class="ui form post">
+      
+    <!-- TITLE -->
+      <div class="header">
+        <h1 class="header">Formulaire de publication</h1>
+      </div>
+
+    <!-- IMAGE -->
+      <div class="div_1">
+        <div class="div_2">
+          <div>
+            <label for="image" name="image">Charger une image</label>
+          </div>
+          <div>
+            <input class="ui input file_input" style="width:500px" name="image" type="file" id="image">
+          </div>
+        </div>
+      </div>
+
+    <!-- INTITULE -->
+      <div class="div_1 center aligned description">
+        <div class="div_2">
+          <div>
+            <label name="intitule">Intitulé <span class="red">*</span></label>
+          </div>
+          <div>
+            <input class="ui input" style="width:500px" name="intitule" type="text" placeholder="Entrez l'intitulé de la publication ici">
+          </div>
+        </div>
+      </div>
+
+    <!-- DESCRIPTION -->
+      <div class="div_1">
+        <div class="div_2">
+          <div>
+            <label name="description">Description <span class="red">*</span></label>
+          </div>
+          <div>
+            <textarea class="ui input" style="width:500px" name="description" type="text" placeholder="Entrez la description de la publication ici"></textarea>
+          </div>
+        </div>
+      </div>
+
+    <!-- SUBMIT BUTTON -->
+      <div class="div_1">
+        <button type="submit" class="ui button">Poster</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- INCLUDE FOOTER -->
+<%- include('../../footer')%>

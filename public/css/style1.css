@@ -1,0 +1,209 @@
+/* ---------- NAVBAR ---------- */
+
+nav{
+    background-color: #256784;
+    color:white;
+    padding: 30px 60px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav li{
+    list-style: none;
+}
+
+nav li a{
+    color:white;
+    text-decoration: none;
+    font-weight:bold;
+    padding: 5px 8px;
+}
+
+nav li a:hover{
+    color:rgb(3, 197, 3)
+}
+
+/* ---------- GENERAL ---------- */
+
+.red{
+    color:rgb(241, 0, 0);
+}
+
+button{
+    width:140px;
+    height:60px;
+}
+
+h1, h3{
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color:black;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.div_1{
+    margin:10px;
+    display:flex;
+    justify-content:center;
+}
+.div_3{
+    margin:3px;
+    display:flex;
+    justify-content:center;
+}
+
+.role_disabled{
+    display:none;
+}
+
+/* ---------- INDEX ---------- */
+
+.giant_introduction{
+    justify-content: center;
+}
+
+.introduction{
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.hg{
+    margin-top:50px !important;
+}; 
+/* ---------- ADMIN ---------- */
+
+.admin_button{
+    display: flex;
+    justify-content: center;
+}
+
+
+.head_button{
+    padding: 0px 10px;
+}
+
+.labtitle{
+    justify-content: center;
+}
+
+/* ---------- ADMIN FORM ---------- */
+
+.input{
+    width: 50px;
+}
+
+/* ---------- USER ---------- */
+.user_div{
+    text-align: center;
+    padding:10px;
+}
+.user_div2{
+    display: flex;
+    justify-content: center;
+    padding:10px;
+}
+
+.forgot_password{
+    font-size:12px;
+}
+
+/* ---------- LOGIN ---------- */
+
+.entete{
+    text-align: center !important;
+}
+
+.div_networks_login{
+    display: flex;
+    justify-content: center;
+}
+
+.div_networks_login2{
+    width:150px;
+    height: 150px;
+}
+
+/* ---------- HOME ---------- */
+
+.home_div_title{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-bottom: 20px;
+}
+
+.home_title{
+    grid-column-start: 2;
+    background-color: rgb(161, 161, 161);
+    color:white;
+}
+
+/* ---------- PASSWORD COLUMNS ---------- */
+
+/* .column1{
+
+} */
+
+/* .column2{
+
+} */
+
+/* .column3{
+
+} */
+
+/* .column4{
+
+} */
+
+/* .column5{
+
+} */
+
+.password_link a{
+    border: none;
+    cursor: pointer;
+}
+
+.password_link a:hover{
+    color:grey;
+}
+
+.column7{
+    display: flex;
+    justify-content: space-around;
+}
+
+.columns{
+    text-align: center;
+}
+
+td a{
+    color:black;
+
+}
+td a:hover{
+    text-decoration: none;
+    color:rgb(82, 82, 82);
+}
+
+th{
+    font-size: 15px;
+    text-align: center;
+}
+
+/* .table1{
+
+} */

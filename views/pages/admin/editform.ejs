@@ -1,0 +1,99 @@
+<!-- INCLUDE HEADER -->
+<%- include('../../header')%>
+
+<% if(locals.amessage){ %>
+  <div class="ui green message">
+    <%- amessage %>
+  </div>
+<% } %>
+
+<% if(locals.amessage_error){ %>
+  <div class="ui red message">
+    <%- amessage_error %>
+  </div>
+<% } %>
+
+<!-- CONTAINER -->
+<div class="container">
+  <div class="ui card centered">
+    <!-- TITLE -->
+    <div>
+      <h1>Formulaire d'inscription</h1>
+    </div>
+
+    <!-- IMAGE -->
+    <div class="image">
+      <img src="https://image.freepik.com/vecteurs-libre/dino-mignon-jouant-guitare-illustration-aquarelle_194871-51.jpg">
+    </div>
+
+    <!-- TITLE -->
+    <div class="content">
+      <a class="header">Entrez vos informations</a>
+
+    <!-- FORM -->
+        <form class="formulaire" method="post">
+          <div class="ui equal width form post">
+
+    <!-- FIRST NAME -->
+            <div class="div_1">
+              <div class="div_2">
+                <div>
+                  <label for="prenom" class="labtitle" name="prenom">Prenom</span></label>
+                </div>
+                <div>
+                  <input class="ui input" id="prenom" name="prenom" type="text" value="<%= book.prenom %>">
+                </div>
+              </div>
+            </div>
+
+    <!-- LAST NAME -->
+            <div class="div_1">
+              <div class="div_2">
+                <div>
+                  <label for="nom" class="labtitle" name="nom">Nom</span></label>
+                </div>
+                <div>
+                  <input class="ui input" id="nom" name="nom" type="text" value="<%= book.nom %>">
+                </div>
+              </div>
+            </div>
+
+    <!-- EMAIL -->
+            <div class="div_1">
+              <div class="div_2">
+                <div>
+                  <label for="email" class="labtitle" name="email">Adresse Email</span></label>
+                </div>
+                <div>
+                  <input class="ui input" id="email" name="email" type="email" value="<%= book.email %>">
+                </div>
+              </div>
+            </div>
+
+    <!-- PSEUDONYME -->
+            <div class="div_1">
+              <div class="div_2">
+                <div>
+                  <label for="pseudo" class="labtitle" name="pseudo">Pseudo</label>
+                </div>
+                <div>
+                  <input class="ui input" name="pseudo" type="text" value="<%= book.pseudo %>">
+                </div>
+              </div>
+            </div>
+
+    <!-- SUBMIT BUTTON -->
+            <div class="div_1">
+              <button type="submit" class="ui button">Modifier</button>
+            </div>
+          </div>
+        </div> 
+        
+        <input type="hidden" value="<%= book.idUtilisateur %>">
+
+      </form>
+    </div>
+</div>
+
+<!-- INCLUDE FOOTER -->
+<%- include('../../footer')%>

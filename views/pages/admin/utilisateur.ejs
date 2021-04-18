@@ -1,0 +1,31 @@
+<%- include('../../header')%>
+
+<table class="ui celled table table1">
+    <tr>
+        <th class="td_title">ID</th>
+        <th class="td_title">Nom</th>
+        <th class="td_title">Prenom</th>
+        <th class="td_title">Pseudo</th>
+        <th class="td_title">Email</th>
+        <th class="td_title">Mot de passe</th>
+        <th></th>
+    </tr>
+    <% using.forEach(function(item) { %>
+    <tr class="columns">
+        <td class="column1"> <%= item.idUtilisateur %> </td>
+        <td class="column2"> <%= item.nom %> </td>
+        <td class="column3"> <%= item.prenom %> </td>
+        <td class="column4"> <%= item.pseudo %></td>
+        <td class="column5"> <%= item.email %></td>
+        <td  class="password_link"> <a>Modifier le mot de passe</a></td> 
+        <td class="column7"> 
+            <a href="/delete_user?idUtilisateur=<%= item.idUtilisateur %>" onClick="return confirm('Voulez-vous continuez ?')"><i class="trash alternate outline icon"></i></a>
+            <a href="/edit_user?idUtilisateur=<%= item.idUtilisateur %>"><i class="retweet icon"></i></a>
+        </td>
+    </tr>
+    <% }) %>
+  
+        
+</table>
+
+<%- include('../../footer')%>

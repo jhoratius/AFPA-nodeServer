@@ -1,0 +1,47 @@
+<!-- INCLUDE HEADER -->
+<%- include('../../header')%>
+
+<!-- VERIFICATION MESSAGES -->
+<% if(locals.message){ %>
+  <div class="ui green message">
+    <%- message %>
+  </div>
+<% } %>
+
+<% if(locals.message_err){ %>
+  <div class="ui red message">
+    <%- message_err %>
+  </div>
+<% } %>
+
+<!-- FORM -->
+<form class="formulaire" action="/com" method="post">
+    <div class="ui equal width form post">
+
+    <!-- TITLE -->
+      <div class="header">
+        <h1 class="header">Formulaire de commentaire</h1>
+      </div>
+
+    <!-- CONTENU -->
+      <div class="div_1">
+        <div class="div_2">
+          <div>
+            <label name="content">Contenu</label>
+          </div>
+          <div>
+            <input class="ui input" style="width:500px" name="contenu" type="text" wtx-context="E54A5973-661C-41F5-ABDD-EC0D4ED80A53">
+          </div>
+        </div>
+      </div>
+
+    <!-- SUBMIT BUTTON -->
+      <div class="div_1">
+        <button type="submit" class="ui button">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- INCLUDE FOOTER -->
+<%- include('../../footer')%>
