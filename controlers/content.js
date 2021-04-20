@@ -13,11 +13,5 @@ exports.getcom = (req, res) => {
     res.render('pages/admin/com')
 };
 exports.com = (req, res) => {
-    console.log('body', req.body);
-    const contenu = req.body.contenu;
-    if(contenu !== '') {
-        contentmodel.modelcom(req, res);
-    } else {
-            return res.render('pages/admin/com', { message_err : "Votre commentaire est vide."})
-        }
+    contentmodel.modelcom(req, res);
 };

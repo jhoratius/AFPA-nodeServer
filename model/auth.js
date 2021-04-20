@@ -5,35 +5,42 @@ const connection = require('../config/dbConnect')
 // USER EXPORTS //
 
 class authmodel {
+
     static registermodel(req, res) {
-        const {prenom, nom, email, password1, password2, pseudo, role} = req.body;
-        connection.query('SELECT email FROM utilisateur WHERE email = ?', [email], async (error, results) => {
-            if(error){
-                console.log(error)
-            }
-            if(results.length > 0){
-                return res.render('pages/userfile/user', {
-                    message_err : 'Cet email est déjà utilisé'
-                })
-            } else if(password1 !== password2){
-                return res.render('pages/userfile/user', {
-                    message_err : 'Les mots de passe ne correspondent pas'
-               });
-            };
-    
-            let hashedPW = await bcrypt.hash(password1, 8);
-            console.log(req.body, 'hashedPW :' + hashedPW);
-            
-            connection.query('INSERT INTO utilisateur SET ?', {nom: nom, prenom: prenom, email: email, password : hashedPW, pseudo: pseudo, role : role}, (error, results) => {
+        if(req.body.prenom && req.body.nom && req.body.email && req.body.password1 && req.body.password2 && req.body.pseudo){
+            const {prenom, nom, email, password1, password2, pseudo, role} = req.body;
+            connection.query('SELECT email FROM utilisateur WHERE email = ?', [email], async (error, results) => {
                 if(error){
-                    console.log(error);
-                } else{
-                    return res.render('pages/userfile/user', {
-                        message : 'Utilisateur enregistré'
-                    });
+                    console.log(error)
                 }
+                if(results.length > 0){
+                    return res.render('pages/userfile/user', {
+                        message_err : 'Cet email est déjà utilisé'
+                    })
+                } else if(password1 !== password2){
+                    return res.render('pages/userfile/user', {
+                        message_err : 'Les mots de passe ne correspondent pas'
+                   });
+                };
+        
+                let hashedPW = await bcrypt.hash(password1, 8);
+                console.log(req.body, 'hashedPW :' + hashedPW);
+                
+                connection.query('INSERT INTO utilisateur SET ?', {nom: nom, prenom: prenom, email: email, password : hashedPW, pseudo: pseudo, role : role}, (error, results) => {
+                    if(error){
+                        console.log(error);
+                    } else{
+                        return res.render('pages/userfile/user', {
+                            message : 'Utilisateur enregistré'
+                        });
+                    }
+                })
             })
-        })
+        } else {
+            return res.render('pages/userfile/user', {
+                message_err : "Un des champs requis n'a pas été rempli"
+            })
+        }
     }
 
     static loginmodel(req, res){
@@ -82,6 +89,7 @@ class authmodel {
     }
 
     }
+    
 }
 
 module.exports = authmodel;

@@ -11,6 +11,7 @@ exports.adminconnected = (req, res) => {
     res.render('pages/admin/adminhome')
 };
 
+// TABLEAUX //
 exports.adminHomepage = (req, res) => {
     adminmodel.adminHomepage(req, res);
 };
