@@ -21,17 +21,5 @@ exports.getlogin = (req, res) => {
     res.render('pages/userfile/login')
 };
 exports.login = async (req, res) => {
-    try {
-        const {email, password} = req.body;
-        if( !email || !password){
-            return res.status(400).render('pages/userfile/login', {
-                message_err : "Vous n'avez pas remplis tous les champs."
-            })
-        }
-        
-        authmodel.loginmodel(req, res);
-
-    } catch (error) {
-        console.log(error)
-    }
+    authmodel.loginmodel(req, res);
 }

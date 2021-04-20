@@ -35,13 +35,9 @@ class usermodel {
     };
     // USER PAGES //
     static userHomepage(req, res){
-        connection.query('SELECT * FROM utilisateur, publication', function(err, rs){
-            res.render('pages/userfile/userhome')
-        } )
-    }
-    static adminHomepage(req, res){
-        connection.query('SELECT * FROM utilisateur, publication', function(err, rs){
-            res.render('pages/admin/adminhome')
+        connection.query('SELECT * FROM utilisateur, publication GROUP BY idPublication', function(err, rs){
+            console.log('response :', rs)
+            res.render('pages/userfile/userhome', {userhome : rs})
         } )
     }
 }

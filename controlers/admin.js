@@ -1,4 +1,5 @@
 const usermodel = require('../model/user');
+const adminmodel = require('../model/admin');
 
 // EDIT //
 exports.edit = async (req, res) => {
@@ -11,6 +12,14 @@ exports.adminconnected = (req, res) => {
 };
 
 exports.adminHomepage = (req, res) => {
-    usermodel.adminHomepage(req, res);
+    adminmodel.adminHomepage(req, res);
 };
+
+exports.publication = (req, res) => {
+    adminmodel.tablePublication(req, res);
+}
+
+exports.commentaire = (req, res) => {
+    adminmodel.tableCommentaire(req,res);
+}
 

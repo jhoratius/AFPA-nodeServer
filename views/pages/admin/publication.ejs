@@ -1,4 +1,4 @@
-<%- include('../../header')%>
+<%- include('../../adminheader')%>
 
 <table class="ui celled table table1">
     <tr>
@@ -9,22 +9,21 @@
         <th class="td_title">Description</th>
         <th></th>
     </tr>
-    <% using.forEach(function(item) { %>
+    <% publi.forEach(function(item) { %>
     <tr class="columns">
-        <td class="column1"> <%= item.idUtilisateur %> </td>
-        <td class="column2"> <%= item.nom %> </td>
-        <td class="column3"> <%= item.prenom %> </td>
-        <td class="column4"> <%= item.pseudo %></td>
-        <td class="column5"> <%= item.email %></td>
-        <td  class="password_link"> <a>Modifier le mot de passe</a></td> 
+        <td class="column1"> <%= item.idPublication %> </td>
+        <td class="column2"> <%= item.image %> </td>
+        <td class="column3"> <%= item.intitule %> </td>
+        <td class="column4"> <%= item.description %></td>
+        <td class="password_link"> <a>Modifier le mot de passe</a></td> 
         <td class="column7"> 
-            <a href="/delete_post?idUtilisateur=<%= item.idUtilisateur %>" onClick="return confirm('Voulez-vous continuez ?')"><i class="trash alternate outline icon"></i></a>
-            <a href="/edit_post?idUtilisateur=<%= item.idUtilisateur %>"><i class="retweet icon"></i></a>
+            <a href="/delete_post?idPublication=<%= item.idPublication %>" onClick="return confirm('Voulez-vous continuez ?')"><i class="trash alternate outline icon"></i></a>
+            <a href="/edit_post?idPublication=<%= item.idPublication %>"><i class="retweet icon"></i></a>
         </td>
     </tr>
     <% }) %>
-  
-        
 </table>
+
+<a class="ui primary button" href="/adminhome">Retour</a>
 
 <%- include('../../footer')%>

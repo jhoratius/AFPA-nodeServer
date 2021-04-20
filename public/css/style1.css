@@ -1,4 +1,8 @@
 /* ---------- NAVBAR ---------- */
+body{
+    background-color: #DEF1FF;
+}
+
 
 nav{
     background-color: #256784;
@@ -30,7 +34,28 @@ nav li a:hover{
     color:rgb(3, 197, 3)
 }
 
+/* ---------- ADMIN NAVBAR ---------- */
+
+.node_title{
+    color:white;
+    text-decoration: none;
+    font-weight:bold;
+    padding: 5px 8px;
+}
+
+.node_title:hover{
+    color:rgb(3, 197, 3)
+}
+
 /* ---------- GENERAL ---------- */
+
+img{
+    width:290px !important;
+    height:300px !important;
+    max-width:290px !important;
+    max-height:300px !important;
+    box-sizing: border-box !important;
+}
 
 .red{
     color:rgb(241, 0, 0);
@@ -87,7 +112,6 @@ a:hover{
 
 .admin_button{
     display: flex;
-    justify-content: center;
 }
 
 
@@ -97,6 +121,11 @@ a:hover{
 
 .labtitle{
     justify-content: center;
+}
+
+.divadminbutton{
+    display: flex;
+    justify-content: space-around;
 }
 
 /* ---------- ADMIN FORM ---------- */
@@ -150,27 +179,17 @@ a:hover{
     color:white;
 }
 
+.big_card{
+    display:flex !important;
+    justify-content: center !important;
+    flex-wrap: wrap;
+}
+
+.ui_card{
+    margin:10px !important;
+}
+
 /* ---------- PASSWORD COLUMNS ---------- */
-
-/* .column1{
-
-} */
-
-/* .column2{
-
-} */
-
-/* .column3{
-
-} */
-
-/* .column4{
-
-} */
-
-/* .column5{
-
-} */
 
 .password_link a{
     border: none;
@@ -203,7 +222,3 @@ th{
     font-size: 15px;
     text-align: center;
 }
-
-/* .table1{
-
-} */

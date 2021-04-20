@@ -1,0 +1,26 @@
+<%- include('../../adminheader')%>
+
+<table class="ui celled table table1">
+    <tr>
+        <th class="td_title">ID Commentaire</th>
+        <th class="td_title">Contenu</th>
+        <th class="td_title">ID Publication</th>
+        <th class="td_title">ID Utilisateur</th>
+        <th class="td_title"></th>
+        <th></th>
+    </tr>
+    <% comment.forEach(function(item) { %>
+    <tr class="columns">
+        <td class="column1"> <%= item.idCommentaire %> </td>
+        <td class="column2"> <%= item.contenu %> </td>
+        <td class="column3"> <%= item.idPublication %> </td>
+        <td class="column4"> <%= item.idUtilisateur %></td>
+        <td class="column7"> 
+            <a href="/delete_post?idCommentaire=<%= item.idCommentaire %>" onClick="return confirm('Voulez-vous continuez ?')"><i class="trash alternate outline icon"></i></a>
+            <a href="/edit_post?idCommentaire=<%= item.idCommentaire %>"><i class="retweet icon"></i></a>
+        </td>
+    </tr>
+    <% }) %>
+</table>
+
+<a class="ui primary button" href="/adminhome">Retour</a>

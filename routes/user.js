@@ -14,7 +14,7 @@ const userControler = require('../controlers/user');
   route.get('/adminhome', userControler.adminHomepage);
 
   // ROUTES POST //
-  route.post('/edit', adminControler.edit);
+  route.post('/edit_user', adminControler.edit);
 
 // EXPORTS //
 module.exports = route;

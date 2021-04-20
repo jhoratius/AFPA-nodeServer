@@ -4,31 +4,32 @@
     <h1>Utilisateur connecté</h1>
 </div>
 <div class="user_div2">
-    <div>
-
-        <div class="ui card">
-            <div class="content">
-              <div class="left floated meta">Profil</div>
-            </div>
-            <div class="image">
-                <img class="ui avatar image" src="../../../public/img/254444.jpg">
-            </div>
-            <div class="content">
-              <span class="right floated">
-                <i class="heart outline like icon"></i>
-                17 likes
-              </span>
-              <i class="comment icon"></i>
+    <div class="big_card">
+<% userhome.forEach(function(item) {%>
+        <div class="ui card ui_card">
+          <div class="content">
+            <div class="left floated meta">Publication</div>
+            <div> <%= item.idPublication%> </div>
+          </div>
+          <div class="image">
+              <img class="ui avatar image" src="../../../img/<%- item.image %>">
+          </div>
+          <div class="content">
+            <span class="right floated">
+              <i class="heart outline like icon"></i>
+              17 likes
+            </span>
+            <i class="comment icon"></i>
               3 comments
-            </div>
-            <div class="extra content">
-              <div class="ui large transparent left icon input">
-                <i class="heart outline icon"></i>
-                <input type="text" placeholder="Add Comment..." wtx-context="1C80E875-83DF-4FFC-B9E8-ED44A0404E5E">
-              </div>
+          </div>
+          <div class="extra content">
+            <div class="ui large transparent left icon input">
+              <i class="heart outline icon"></i>
+              <input type="text" placeholder="Add Comment...">
             </div>
           </div>
-
+        </div>
+<% })%>
     </div>
 </div>
 

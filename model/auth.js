@@ -35,8 +35,16 @@ class authmodel {
             })
         })
     }
+
     static loginmodel(req, res){
-        const {email, password} = req.body;
+        
+        try {
+            const {email, password} = req.body;
+            if( !email || !password){
+                return res.status(400).render('pages/userfile/login', {
+                    message_err : "Vous n'avez pas remplis tous les champs."
+                })
+            }
         connection.query('SELECT * FROM utilisateur WHERE email = ?', [email], async (error, results) => {
             console.log(results);
             var comparaison = await bcrypt.compare(password, results[0].password);
@@ -68,6 +76,11 @@ class authmodel {
                 }
             }
         })
+        }
+    catch (error) {
+        console.log(error)
+    }
+
     }
 }
 
