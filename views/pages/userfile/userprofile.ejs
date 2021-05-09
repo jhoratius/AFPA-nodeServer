@@ -1,0 +1,38 @@
+<%- include('../../userprofileheader')%>
+
+<div  class="user_div">
+    <h1>Profil Utilisateur : <%= jwtToken.id %></h1>
+</div>
+
+<%userprofileobj.forEach(function(item){%>
+<div class="userdiv1">
+    <div class="userdiv2">
+        <div class="userdiv3 ui card">
+          <div class="content">
+            <div class="left floated"><%= item.pseudo%></div>
+            <div class="right floated"><a><i class="th large icon"></i></a></div> 
+            <div class="right floated"> <%= item.intitule%> &nbsp</div>
+          </div>
+          <div class="image">
+              <img class="ui image" src="../../../img/<%- item.image %>">
+          </div>
+          <div class="content">
+            <%= item.description%>
+          </div>
+          <div class="extra content">
+            <div class="left floated icon">
+              <a><i class="heart outline icon"></i></a>
+              <%= item.likes%>
+            </div>
+            <div class="right floated">
+              <a class="comment_button">Add Comment...</a>
+            </div>
+            <div class="right floated">
+              <p> 3 commentaires &nbsp</p>
+            </div>
+        </div>
+    </div>
+</div>
+<% }) %>
+<!-- <a href='/com'><button class="ui button primary"><i class="download icon"></i>Ajouter un commentaire</button></a> -->
+<%- include('../../userprofilefooter')%>

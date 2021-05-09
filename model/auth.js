@@ -52,41 +52,41 @@ class authmodel {
                     message_err : "Vous n'avez pas remplis tous les champs."
                 })
             }
-        connection.query('SELECT * FROM utilisateur WHERE email = ?', [email], async (error, results) => {
-            console.log(results);
-            var comparaison = await bcrypt.compare(password, results[0].password);
-            if(!results || !comparaison) {
-                res.status(401).render('pages/userfile/login', {
-                    message_err : "L'adresse e-mail ou le mot de passe est incorrect"
-                })
-            } else {
-                const idUtilisateur = results[0].idUtilisateur;
-                const token = jwt.sign({id: idUtilisateur}, process.env.JWT_SECRET, {
-                    expiresIn: process.env.JWT_EXPIRES_IN
-                });
-
-                console.log("The token is: " + token);
-
-                const cookieOptions = {
-                    expires: new Date(
-                        Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
-                    ),
-                    httpOnly: true
-                }
-                res.cookie('jwt', token, cookieOptions);
-
-                const role = results[0].Role;
-                if(role === 'Administrateur'){
-                   return res.status(200).redirect("/adminhome")
+            connection.query('SELECT * FROM utilisateur WHERE email = ?', [email], async (error, results) => {
+                console.log("res :", results);
+                var comparaison = await bcrypt.compare(password, results[0].password);
+                if(!results || !comparaison) {
+                    res.status(401).render('pages/userfile/login', {
+                        message_err : "L'adresse e-mail ou le mot de passe est incorrect"
+                    })
                 } else {
-                    return res.status(200).redirect("/userhome")
+                    const idUtilisateur = results[0].idUtilisateur, Role = results[0].Role, Pseudo = results[0].pseudo;
+                    const token = jwt.sign({id: idUtilisateur, role: Role, pseudo : Pseudo}, process.env.JWT_SECRET, {
+                        expiresIn: process.env.JWT_EXPIRES_IN
+                    });
+
+                    console.log("The token is: " + token);
+
+                    const cookieOptions = {
+                        expires: new Date(
+                            Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+                        ),
+                        httpOnly: true
+                    }
+                    res.cookie('jwt', token, cookieOptions);
+
+                    const role = results[0].Role;
+                    if(role === 'Administrateur'){
+                       return res.status(200).redirect("/adminhome")
+                    } else {
+                        return res.status(200).redirect("/userhome")
+                    }
                 }
-            }
-        })
+            })
         }
-    catch (error) {
-        console.log(error)
-    }
+        catch (error) {
+            console.log(error)
+        }
 
     }
     

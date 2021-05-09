@@ -7,4 +7,4 @@ exports.userHomepage = (req, res) => {
 
 exports.adminHomepage = (req, res) => {
     usermodel.adminHomepage(req, res);
-}
+};

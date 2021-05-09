@@ -13,6 +13,9 @@ const userControler = require('../controlers/user');
   route.get('/userhome', userControler.userHomepage);
   route.get('/adminhome', userControler.adminHomepage);
 
+  route.get('/userprofile', userModel.userProfile);
+  route.get('/disconnection', userModel.userDisconnect)
+
   // ROUTES POST //
   route.post('/edit_user', adminControler.edit);
 

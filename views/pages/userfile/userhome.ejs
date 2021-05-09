@@ -3,29 +3,32 @@
 <div  class="user_div">
     <h1>Utilisateur connecté</h1>
 </div>
-<div class="user_div2">
-    <div class="big_card">
-<% userhome.forEach(function(item) {%>
-        <div class="ui card ui_card">
+<div class="userdiv1">
+    <div class="userdiv2">
+
+<% userhomeobj.forEach(function(item) {%>
+  
+        <div class="userdiv3 ui card">
           <div class="content">
-            <div class="left floated meta">Publication</div>
-            <div> <%= item.idPublication%> </div>
+            <div class="left floated">Utilisateur <%= item.publication_idUtilisateur %></div>
+            <div class="right floated"> <%= item.intitule %></div>
           </div>
           <div class="image">
-              <img class="ui avatar image" src="../../../img/<%- item.image %>">
+              <img class="ui image" src="../../../img/<%- item.image %>">
           </div>
           <div class="content">
-            <span class="right floated">
-              <i class="heart outline like icon"></i>
-              17 likes
-            </span>
-            <i class="comment icon"></i>
-              3 comments
+            <%= item.description%>
           </div>
           <div class="extra content">
-            <div class="ui large transparent left icon input">
-              <i class="heart outline icon"></i>
-              <input type="text" placeholder="Add Comment...">
+            <div class="left floated icon">
+              <a><i class="heart outline icon"></i></a>
+              <%= item.likes%>
+            </div>
+            <div class="right floated">
+              <a class="comment_button"> Ajouter un commentaire...</a>
+            </div>
+            <div class="right floated">
+              <p> 3 commentaires &nbsp</p>
             </div>
           </div>
         </div>
