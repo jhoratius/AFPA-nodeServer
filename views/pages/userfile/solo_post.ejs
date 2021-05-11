@@ -1,0 +1,56 @@
+<%- include('../../useheader')%>
+
+  <div class="user_div">
+    <h1>Solopost</h1>
+  </div>
+  <div class="userdiv1">
+    <div class="userdiv2">
+
+      <div class="userdiv3 ui card">
+        <div class="content">
+          <div class="left floated">
+            Utilisateur <%= solopostobj.publication_idUtilisateur %>
+          </div>
+          <div class="right floated">
+            <%= solopostobj.intitule %>
+          </div>
+        </div>
+        <div class="image">
+          <img class="ui image" src="../../../img/<%= solopostobj.image%>">
+        </div>
+        <div class="content">
+          <%= solopostobj.description%>
+        </div>
+        <div class="extra content">
+          <div class="left floated icon">
+            <a><i class="heart outline icon"></i></a>
+            <%= solopostobj.likes%>
+          </div>
+          <div class="right floated">
+            <a href="#" class="comment_button"> Ajouter un commentaire...</a>
+
+          </div>
+          <form method='post' action='/solopost'>
+            <% if(locals.message_err){ %>
+              <div class="ui red message">
+                <%- message_err %>
+              </div>
+            <% } %>
+            <% if(locals.message){ %>
+              <div class="ui green message">
+                <%- message %>
+              </div>
+            <% } %>
+            <input type='text' name='contenu'>
+            <button type='submit'></button>
+          </form>
+          <div class="right floated">
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- <a href='/com'><button class="ui button primary"><i class="download icon"></i>Ajouter un commentaire</button></a> -->
+  <%- include('../../footer')%>

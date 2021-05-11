@@ -1,16 +1,15 @@
 <%- include('../../useheader')%>
 
 <div  class="user_div">
-    <h1>Utilisateur connecté</h1>
+    <h1>Fil d'actualité</h1>
 </div>
 <div class="userdiv1">
     <div class="userdiv2">
 
 <% userhomeobj.forEach(function(item) {%>
-  
         <div class="userdiv3 ui card">
           <div class="content">
-            <div class="left floated">Utilisateur <%= item.publication_idUtilisateur %></div>
+            <div class="left floated">Utilisateur <%= item.publication_idUtilisateur %> </div>
             <div class="right floated"> <%= item.intitule %></div>
           </div>
           <div class="image">
@@ -25,7 +24,7 @@
               <%= item.likes%>
             </div>
             <div class="right floated">
-              <a class="comment_button"> Ajouter un commentaire...</a>
+              <a href="/solopost" class="comment_button"> Ajouter un commentaire...</a>
             </div>
             <div class="right floated">
               <p> 3 commentaires &nbsp</p>

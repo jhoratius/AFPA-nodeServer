@@ -1,17 +1,21 @@
 const contentmodel = require('../model/content');
 
-// PUBLICATION //
+// GETS //
 exports.getpost = (req, res) => {
     res.render('pages/admin/post')
 };
 exports.post = (req, res) => {
     contentmodel.modelpost(req, res);
 };
+exports.getSolopost = (req, res) => {
+    contentmodel.solopost(req, res);
+}
 
-// COMMENTAIRE //
-exports.getcom = (req, res) => {
-    res.render('pages/admin/com')
-};
+// POSTS //
+
 exports.com = (req, res) => {
     contentmodel.modelcom(req, res);
 };
+exports.solopost = (req, res) => {
+    contentmodel.modelsolopost(req, res);
+}

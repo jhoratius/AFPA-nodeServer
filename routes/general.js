@@ -19,13 +19,13 @@ var upload = multer({ storage: storage });
 route.get("/", (req, res) => {
     res.render('pages/accueil')
 });
-
 route.get('/post', contentControler.getpost);
-route.get('/com', contentControler.getcom);
+route.get('/solopost', contentControler.getSolopost);
 
 // ROUTES POST //
 route.post('/post', upload.single('image'), contentControler.post);
-route.post('/com', contentControler.com);
+
+route.post('/solopost', contentControler.solopost);
 
 // EXPORTS //
 module.exports = route;
