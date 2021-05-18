@@ -1,0 +1,48 @@
+<%- include('../../userprofileheader')%>
+<div class="ui fitted divider navdivider"></div>
+<nav class="navprofile2">
+  <div class="user_div">
+      <h1>Compte : <%= jwtToken.pseudo %></h1>
+  </div>
+  <div>
+      <li class="head_button"><a class="ui inverted blue button" href="/post">Modifier son profil</a>
+  </div>
+</nav>
+<div>
+  <h2>Formulaire de modification :</h2>
+</div>
+<div class="updateform">
+  <form method="post">
+    <div>
+      <div class="ui input">
+        <label for="nom">Nom</label>
+        <input type="text" value="<%= userupdateobj.nom%>">
+      </div>
+    </div>
+    <div>
+      <div class="ui input">
+        <label for="prenom">Prenom</label>
+        <input type="text" value="<%= userupdateobj.prenom%>">
+      </div>
+    </div>
+    <div>
+      <div class="ui input">
+        <label for="pseudo">Pseudo</label>
+        <input type="text" value="<%= userupdateobj.pseudo%>">
+      </div>
+    </div>
+    <div>
+      <div>
+        <label for="password"></label>
+        <input class="ui button" type="button" value="Changer de mot de passe" name="password">
+      </div>
+    </div>
+    <div>
+      <div>
+        <button type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<%- include('../../userupdatefooter')%>

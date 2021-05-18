@@ -37,6 +37,10 @@ nav li a:hover{
     color:rgb(3, 197, 3)
 }
 
+.navdivider{
+    background-color: #1a4c61;
+}
+
 .center_nav_title{
     font-size: 23px !important;
 }
@@ -63,6 +67,19 @@ nav li a:hover{
     height:10px !important;
 }
 
+.comment_div{
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.comment_textarea textarea{
+    margin-left: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #2071bd;
+    outline:none;
+}
+
 .application_div{
     display: flex;
     flex-direction: column;
@@ -82,6 +99,11 @@ nav li a:hover{
 
 img{
     box-sizing: border-box !important;
+    max-height: 520px !important;
+}
+
+.bg_image{
+    background-color: #FFFFFF;
 }
 
 .red{
@@ -168,7 +190,7 @@ a:hover{
 
 .downmenu1{
     display:flex !important;
-    justify-content: center;
+    justify-content:center;
     align-items: center;
     font-size: 1.2em !important;
 }

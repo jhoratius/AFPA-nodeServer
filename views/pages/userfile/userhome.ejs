@@ -9,11 +9,13 @@
 <% userhomeobj.forEach(function(item) {%>
         <div class="userdiv3 ui card">
           <div class="content">
-            <div class="left floated">Utilisateur <%= item.publication_idUtilisateur %> </div>
+            <div class="left floated"><%= item.pseudo %> </div>
             <div class="right floated"> <%= item.intitule %></div>
           </div>
           <div class="image">
-              <img class="ui image" src="../../../img/<%- item.image %>">
+            <div class="bg_image">
+              <img class="ui centered image" src="../../../img/<%- item.image %>">
+            </div>
           </div>
           <div class="content">
             <%= item.description%>
@@ -24,12 +26,15 @@
               <%= item.likes%>
             </div>
             <div class="right floated">
-              <a href="/solopost" class="comment_button"> Ajouter un commentaire...</a>
+              <a href="/solopost?idPublication=<%= item.idPublication%>" class="comment_button"> Ajouter un commentaire...</a>
             </div>
             <div class="right floated">
               <p> 3 commentaires &nbsp</p>
             </div>
-          </div>
+          </div><input type="hidden" placeholder="<%= item.idPublication%>">
+        </div>
+        <div>
+          
         </div>
 <% })%>
     </div>

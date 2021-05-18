@@ -5,40 +5,23 @@ const jwt = require('jsonwebtoken');
 // USER EXPORTS //
 
 class usermodel {
-    // FORM //
-
-    static userform(req, res, next) {
-        connection.query('SELECT * FROM utilisateur', function (err, rs) {
-            res.render('pages/admin/utilisateur', { using: rs })
-        })
-    }
 
     // UPDATE //
 
-    static userdelete(req, res, next) {
-        connection.query('DELETE FROM utilisateur WHERE idUtilisateur = ?', req.query.idUtilisateur, function (err, rs) {
-            res.redirect('/utilisateur')
+    static updateprofile(req, res, next) {
+        var jwtToken = req.cookies.jwt;
+        if(jwtToken != null){
+            var jwtVerify = jwt.verify(jwtToken, process.env.JWT_SECRET);
+            if(jwtVerify != null){
+                var idUtilisateur = req.query.idUtilisateur;
+                var jwtDecode = jwt.decode(jwtToken)
+                connection.query('SELECT nom, prenom, pseudo FROM utilisateur WHERE idUtilisateur = ?', idUtilisateur, function (err, rs) {
+                res.render('pages/userfile/updateProfile', { userupdateobj: rs[0], jwtToken : jwtDecode });
         })
-    };
-
-    static useredit(req, res, next) {
-        connection.query('SELECT * FROM utilisateur WHERE idUtilisateur = ?', req.query.idUtilisateur, function (err, rs) {
-            console.log('data', req.body)
-            res.render('pages/admin/editform', { book: rs[0] });
-        })
-    };
-
-    static edit(req, res, next) {
-        var parametres = [
-            req.body,       // data for update
-            req.query.idUtilisateur    // condition for update
-        ]
-        let sqlQuery = 'UPDATE utilisateur SET ? WHERE idUtilisateur = ?';
-        connection.query(sqlQuery, parametres, (err, rs) => {
-            if (err) throw err;
-            res.redirect('/utilisateur')
-        })
-    };
+            }
+        }
+        
+    }
 
     // USER PAGES //
 
@@ -48,19 +31,19 @@ class usermodel {
             var jwtVerify = jwt.verify(jwtToken, process.env.JWT_SECRET);
             if (jwtVerify !== null) {
                 var jwtDecode = jwt.decode(jwtToken);
-                connection.query('SELECT * FROM publication GROUP BY idPublication', function (err, rs) {
-                    console.log('response :', rs)
+                connection.query('SELECT idPublication, publication_idUtilisateur, image, intitule, description, likes, idUtilisateur, prenom, nom, email, pseudo FROM publication LEFT JOIN utilisateur ON publication.Publication_idUtilisateur = utilisateur.idUtilisateur GROUP BY idPublication', function (err, rs) {
+                    console.log('result :', rs);
                     return res.render('pages/userfile/userhome', { userhomeobj: rs, jwt: jwtDecode })
                 })
             } else {
-                return res.send('Impossible de vérifier le cookie')
+                    return res.status(400).redirect({ message : 'Impossible de vérifier le cookie' })
             }
         } else {
             return res.send('Page indisponible');
         }
     }
 
-    static userProfile(req, res) {
+    static userprofile(req, res) {
     var token = req.cookies.jwt;
     if (token === null) {
         return res.send('Page indisponible')
@@ -72,8 +55,7 @@ class usermodel {
                 if (err) {
                     console.log(err)
                 } else {
-                    console.log('decode :', jwtDecode)
-                    res.render('pages/userfile/userprofile', { userprofileobj: rs, jwtToken: jwtDecode })
+                    return res.render('pages/userfile/userprofile', { userprofileobj: rs, jwtToken: jwtDecode })
                 }
             })
         }
@@ -84,7 +66,6 @@ class usermodel {
 
     static userDisconnect(req, res) {
     const token = req.cookies.jwt;
-    console.log('token :', token);
     const jwtToken = jwt.verify(token, process.env.JWT_SECRET)
     try {
         if (jwtToken != null) {
@@ -103,6 +84,28 @@ class usermodel {
     }
 }
 
+    static deleteaccount(req, res){
+        const token = req.cookies.jwt;
+        console.log('token :', token);
+        try {
+            if (token !== null) {
+                var jwtToken = jwt.verify(token, process.env.JWT_SECRET);
+                if (jwtToken != null){
+                    var jwtDecode = jwt.decode(token);
+                    console.log('decode :', jwtDecode);
+                    connection.query('DELETE * FROM utilisateur WHERE idUtilisateur = jwtDecode.id', (err, result) =>{
+                        return res.render('pages/accueil')
+                    })
+                } else {
+                    return res.send('Suppression du compte impossible')
+                }
+            } else {
+                return res.render('pages/userfile/userprofile', { 'message': 'Cookie introuvable' })
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }
 
 module.exports = usermodel;
